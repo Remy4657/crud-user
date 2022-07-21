@@ -51,8 +51,6 @@ const TableUsers = (props) => {
     const handlePageClick = (event) => {
         setPageNumber(event.selected + 1)
         getUsers(event.selected + 1)
-
-
     }
 
     const handleUpdateTable = (user) => {
