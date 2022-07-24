@@ -1,0 +1,89 @@
+:root {
+    --border-radius: .5rem;
+    --green: #7AA00C;
+    --border-bottom: solid 1px #ccc;
+}
+
+.col-sm{
+    width: 85%;
+}
+.login {
+    h2 {
+        text-align: center;
+        font-weight: 600;
+
+    }
+
+    >i {
+        right: 10px;
+        top: 200px;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    margin: 5rem auto;
+   
+
+    input {
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: rgb(241, 233, 233);
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: .3rem;
+
+        &:hover {
+            background-color: rgb(245, 240, 240);
+        }
+    }
+
+    input[type="password"] {}
+
+    button {
+        padding: 1rem;
+        border-radius: .3rem;
+        margin-top: 2rem;
+        i {
+            animation: spin infinite 1.5s linear;
+        
+            /*You can increase or decrease the timer (5s) to 
+             increase or decrease the speed of the spinner*/
+          }
+        
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+    }
+
+    .go-back {
+        align-items: center;
+        font-size: .7rem;
+
+        i {
+            line-height: 29px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: .3rem;
+        }
+
+        span {
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: .3rem;
+        }
+    }
+
+    .active-login {
+        background-color: red;
+        color: #fff;
+    }
+
+    button:disabled {
+        cursor: not-allowed
+    }
+}
