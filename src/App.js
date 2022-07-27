@@ -5,25 +5,24 @@ import Header from './components/Header';
 import Container from 'react-bootstrap/Container';
 import { ToastContainer, toast } from 'react-toastify';
 import Home from './components/Home';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from './components/Login';
-import {useContext, useState} from 'react'
+import { useContext } from 'react'
 import { UserContext } from './context/UserContext';
+import NotFound from './routes/NotFound';
 
 function App() {
-  const { user } = useContext(UserContext);
-  console.log('user: ', user)
 
   return (
     <div className="App">
       <Header />
       <Container>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/users" element={<TableUsers />} />
-            <Route path="/login" element={<Login />}></Route>
-          </Routes>
-
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<TableUsers />} />
+          <Route path="/login" element={<Login />}></Route>
+          <Route path='*' element={<NotFound />} />
+        </Routes>
       </Container>
 
       <ToastContainer />

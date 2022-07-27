@@ -12,9 +12,9 @@ const Header = () => {
     const navigate = useNavigate()
     const { logout, user, login } = useContext(UserContext)
     useEffect(() => {
-            if(localStorage.getItem('email') !== null){
-                login(localStorage.getItem('email'), localStorage.getItem('token'))
-            }
+        if (localStorage.getItem('email') !== null) {
+            login(localStorage.getItem('email'), localStorage.getItem('token'))
+        }
     }, [])
 
     const handleLogout = () => {
@@ -32,7 +32,7 @@ const Header = () => {
         <>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <NavLink className='nav-link' to='/' >
+                    <NavLink className='text-decoration-none nav-link ml-n5' to='/' >
                         <h2>React app</h2>
                     </NavLink>
 

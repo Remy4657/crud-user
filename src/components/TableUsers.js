@@ -129,13 +129,13 @@ const TableUsers = (props) => {
         if (e.target.files && e.target.files[0]) {
 
             let file = e.target.files[0]
-            
+
             if (file.type === 'text/csv') {
                 Papa.parse(file, {
                     complete: function (results) {
                         // make data
                         let file_upload = results.data
-                      
+
                         // check qty of fields
                         if (file_upload[0][0] === '') {
                             toast.error('Error in file import is not have data !', {
@@ -180,11 +180,11 @@ const TableUsers = (props) => {
     }
     return (
         <>
-            <input className='mt-5 p-1 col-4' placeholder='Enter email...' type='text' onChange={(event) => handleSearch(event)}></input>
-            <div className='mb-3 d-flex align-items-center justify-content-between'>
+            <input className='my-5 p-1 col-12 col-lg-4 col-md-6 col-sm-8' placeholder='Enter email...' type='text' onChange={(event) => handleSearch(event)}></input>
+            <div className='mb-3 d-sm-flex align-items-center justify-content-between'>
 
                 <span><b>List User:</b></span>
-                <div className='button-group'>
+                <div className='button-group my-3'>
 
                     <label htmlFor='test' className='btn btn-warning text-white'>
                         <i class="fa-solid fa-file-import"></i>  Import</label>
@@ -197,66 +197,69 @@ const TableUsers = (props) => {
                     </button>
                 </div>
             </div>
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            <div className='d-flex justify-content-between'>
-                                <span>ID</span>
-                                <span className='icon-sort'>
-                                    <i
-                                        class="fa-solid fa-arrow-up-long"
-                                        onClick={() => handleSort('id', 'asc')}
-                                    ></i>
-                                    <i
-                                        class="fa-solid fa-arrow-down-long"
-                                        onClick={() => handleSort('id', 'desc')}
-                                    >
+            <div className='table-responsive'>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div className='d-flex justify-content-between'>
+                                    <span>ID</span>
+                                    <span className='icon-sort'>
+                                        <i
+                                            class="fa-solid fa-arrow-up-long"
+                                            onClick={() => handleSort('id', 'asc')}
+                                        ></i>
+                                        <i
+                                            class="fa-solid fa-arrow-down-long"
+                                            onClick={() => handleSort('id', 'desc')}
+                                        >
 
-                                    </i>
-                                </span>
-                            </div>
-                        </th>
-                        <th scope="col">
-                            <div className='d-flex justify-content-between'>
-                                <span>First name</span>
-                                <span className='icon-sort'>
-                                    <i class="fa-solid fa-arrow-up-long" onClick={() => handleSort('first_name', 'asc')}></i>
-                                    <i class="fa-solid fa-arrow-down-long" onClick={() => handleSort('first_name', 'desc')}></i>
-                                </span>
-                            </div>
-                        </th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listUsers && listUsers.length > 0 &&
-                        listUsers.map((item, index) => (
+                                        </i>
+                                    </span>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div className='d-flex justify-content-between'>
+                                    <span>First name</span>
+                                    <span className='icon-sort'>
+                                        <i class="fa-solid fa-arrow-up-long" onClick={() => handleSort('first_name', 'asc')}></i>
+                                        <i class="fa-solid fa-arrow-down-long" onClick={() => handleSort('first_name', 'desc')}></i>
+                                    </span>
+                                </div>
+                            </th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listUsers && listUsers.length > 0 &&
+                            listUsers.map((item, index) => (
 
-                            <tr key={index}>
-                                <td>{item.id}</td>
-                                <td>{item.first_name}</td>
-                                <td>{item.last_name}</td>
-                                <td>{item.email}</td>
-                                <td>
-                                    <button
-                                        className='mx-3 btn btn-warning'
-                                        onClick={() => {
-                                            handleEditUser(item)
-                                        }}>
-                                        Edit</button>
-                                    <button
-                                        className='mx-3 btn btn-danger'
-                                        onClick={() => { handleDeleteUser(item) }}
-                                    >Delete</button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                                <tr key={index}>
+                                    <td>{item.id}</td>
+                                    <td>{item.first_name}</td>
+                                    <td>{item.last_name}</td>
+                                    <td>{item.email}</td>
+                                    <td>
+                                        <button
+                                            className='mx-3 btn btn-warning'
+                                            onClick={() => {
+                                                handleEditUser(item)
+                                            }}>
+                                            Edit</button>
+                                        <button
+                                            className='mx-3 btn btn-danger'
+                                            onClick={() => { handleDeleteUser(item) }}
+                                        >Delete</button>
+                                    </td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+
 
             <ModalAddNew isAddNewUser={isAddNewUser} handleClose={handleClose} handleUpdateTable={handleUpdateTable} />
             <ModalEditUser isEditUser={isEditUser} handleClose={handleClose} inforEdit={inforEdit} handleUpdateFromModal={handleUpdateFromModal} pageNumber={pageNumber} />

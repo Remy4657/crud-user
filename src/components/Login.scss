@@ -4,9 +4,10 @@
     --border-bottom: solid 1px #ccc;
 }
 
-.col-sm{
+.col-sm {
     width: 85%;
 }
+
 .login {
     h2 {
         text-align: center;
@@ -16,13 +17,13 @@
 
     >i {
         right: 10px;
-        top: 200px;
+        top: 22.6rem;
         cursor: pointer;
         position: absolute;
     }
 
     margin: 5rem auto;
-   
+
 
     input {
         width: 100%;
@@ -43,20 +44,24 @@
         padding: 1rem;
         border-radius: .3rem;
         margin-top: 2rem;
+        border: none;
+        outline: none;
+
         i {
             animation: spin infinite 1.5s linear;
-        
+
             /*You can increase or decrease the timer (5s) to 
              increase or decrease the speed of the spinner*/
-          }
-        
+        }
+
         @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
     }
 

@@ -1,10 +1,16 @@
-.icon-sort{
-    i{
+.icon-sort {
+    i {
         padding: 0 3px;
         cursor: pointer;
     }
 }
-.button-group{
+
+.button-group {
     display: flex;
     gap: 10px;
+}
+
+.pagination {
+    justify-content: center;
+    margin-top: 5rem;
 }

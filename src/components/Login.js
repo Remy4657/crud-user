@@ -20,7 +20,7 @@ const Login = () => {
         if (token) {
             navigate("/")
         }
-    },[])
+    }, [])
 
     const handleLogin = async () => {
         if (!email || !password) {
@@ -30,13 +30,13 @@ const Login = () => {
             return
         }
         setIsLoading(true)
-        let res = await loginApi(email, password)
+        let res = await loginApi(email.trim(), password)
 
         if (res && res.token) {
-    
+
             login(email, res.token)
             navigate("/");
-          
+
             toast.success('Login success', {
                 position: toast.POSITION.TOP_RIGHT
             });
@@ -54,18 +54,29 @@ const Login = () => {
     const handleGoBack = () => {
         navigate("/")
     }
+
+    const handlePressEnter = (e) => {
+        if (e.key === "Enter") {
+            handleLogin()
+        }
+    }
     return (
         <div className=''>
             <div className="d-flex flex-column login col-lg-3 col-md-8 col-sm position-relative">
                 <h2 className='my-5'>Login</h2>
                 <span>Email or Username ( Nhập email này để login thành công: eve.holt@reqres.in)</span>
                 <input placeholder="Email" onChange={(e) => { setEmail(e.target.value) }} />
-                <input type={isShowPassword ? 'text' : 'password'} placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} />
+                <input
+                    type={isShowPassword ? 'text' : 'password'}
+                    placeholder="Password" onChange={(e) => { setPassword(e.target.value) }}
+                    onKeyUp={(e) => { handlePressEnter(e) }}
+                />
                 <i className={isShowPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'} onClick={() => { setIsShowPassword(!isShowPassword) }}></i>
                 <button
                     className={(email && password) ? 'active-login' : 'not-alow'}
                     disabled={((email && password)) ? false : true}
                     onClick={() => handleLogin()}
+
                 >
                     {isLoading && <i className="fas fa-sync fa-spin"></i>} &nbsp; Login
                 </button>
